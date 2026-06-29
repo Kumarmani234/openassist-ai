@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('prompts', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')
+                ->nullable()
+                ->constrained()
+                ->nullOnDelete();
+            $table->string('title');
+            $table->longText('prompt');
+            $table->boolean('is_public')
+                ->default(false);
             $table->timestamps();
         });
     }

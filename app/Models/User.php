@@ -22,6 +22,26 @@ class User extends Authenticatable
      *
      * @return array<string, string>
      */
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+
+    public function chats()
+    {
+        return $this->hasMany(Chat::class);
+    }
+
+    public function documents()
+    {
+        return $this->hasMany(Document::class);
+    }
+
+    public function prompts()
+    {
+        return $this->hasMany(Prompt::class);
+    }
+
     protected function casts(): array
     {
         return [
